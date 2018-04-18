@@ -1,0 +1,6 @@
+- grunt> A = LOAD '/4300.txt' USING TextLoader()  AS (Words:Chararray) ;
+- grunt> DUMP A ;
+- grunt> B = FOREACH A GENERATE FLATTEN (TOKENIZE(*)) ;
+- grunt> C = GROUP B BY $0 ;
+- grunt> D = FOREACH C GENERATE group, COUNT(B) ;
+- grunt> STORE D INTO '/output' ;
